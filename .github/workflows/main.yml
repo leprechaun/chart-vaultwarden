@@ -12,3 +12,6 @@ jobs:
         run: go version
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
+      - name: test helm
+        run: |
+          helm version
