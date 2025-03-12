@@ -15,3 +15,7 @@ jobs:
       - name: test helm
         run: |
           helm version
+      - name: Package
+        run: |
+          helm package ${{ github.run_id }} ./helm-charts/vaultwarden/
+          ls -lah
