@@ -12,10 +12,14 @@ jobs:
         run: go version
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
-      - name: test helm
+      - name: Lint
         run: |
-          helm version
+          helm lint ./helm-charts/vaultwarden/
       - name: Package
         run: |
           helm package --version 0.1.${{ github.run_number }} ./helm-charts/vaultwarden/
-          ls -lah
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: chart
+          path: vaultwarden-*.tgz
