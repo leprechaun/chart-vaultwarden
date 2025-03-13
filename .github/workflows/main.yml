@@ -7,19 +7,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # You can test your matrix by printing the current Go version
+
       - name: Display Go version
         run: go version
+
       - name: Helm tool installer
         uses: Azure/setup-helm@v3
+
       - name: Lint
         run: |
           helm lint ./helm-charts/vaultwarden/
+
       - name: Package
         run: |
           helm package --version 0.1.${{ github.run_number }} ./helm-charts/vaultwarden/
+
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: chart
           path: vaultwarden-0.1.${{ github.run_number }}.tgz
+
+      - name: Pushes test file
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'vaultwarden-*.tgz'
+          destination_repo: 'leprechaun/leprechaun.github.io'
+          destination_folder: 'vaultwarden'
+          user_email: 'leprechaun-automation@github.com'
+          user_name: 'leprechaun-automation'
+          commit_message: Automated commit
