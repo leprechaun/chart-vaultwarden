@@ -36,6 +36,7 @@ jobs:
           source_file: 'vaultwarden-*.tgz'
           destination_repo: 'leprechaun/leprechaun.github.io'
           destination_folder: 'vaultwarden'
+          destination_branch: master
           user_email: 'leprechaun-automation@github.com'
           user_name: 'leprechaun-automation'
           commit_message: Automated commit
