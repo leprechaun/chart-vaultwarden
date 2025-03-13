@@ -2,5 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "helm": {
+    "commitMessageTopic": "helm values {{depName}}",
+    "fileMatch": [
+      "(^|/)values\\.ya?ml$",
+      "(^|/)Chart\\.yaml$"
+    ],
+    "pinDigests": false
+  }
 }
