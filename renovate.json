@@ -3,7 +3,7 @@
   "extends": [
     "config:recommended"
   ],
-  "helm": {
+  "helm-values": {
     "commitMessageTopic": "helm values {{depName}}",
     "fileMatch": [
       "(^|/)values\\.ya?ml$",
