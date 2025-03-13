@@ -33,7 +33,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'vaultwarden-*.tgz'
+          source_file: vaultwarden-0.1.${{ github.run_number }}.tgz
           destination_repo: 'leprechaun/leprechaun.github.io'
           destination_folder: 'vaultwarden'
           destination_branch: master
