@@ -32,8 +32,8 @@ jobs:
           name: chart
           path: vaultwarden-0.1.${{ github.run_number }}.tgz
 
-      - name: Pushes test file
-        uses: dmnemec/copy_file_to_another_repo_action@main
+      - name: Push Chart Artifact
+        uses: dmnemec/copy_file_to_another_repo_action@bbebd3da22e4a37d04dca5f782edd5201cb97083
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
