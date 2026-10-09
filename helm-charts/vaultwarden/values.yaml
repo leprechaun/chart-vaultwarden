@@ -56,6 +56,26 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+httproute:
+  enabled: false
+  annotations: {}
+  labels: {}
+  # Reference(s) to the Gateway(s) this route should attach to.
+  parentRefs: []
+    # - name: my-gateway
+    #   namespace: gateway-system
+    #   sectionName: https
+  hostnames: []
+    # - chart-example.local
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      # filters: []
+      # backendRefs defaults to the chart's own Service/port when omitted
+      # backendRefs: []
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little

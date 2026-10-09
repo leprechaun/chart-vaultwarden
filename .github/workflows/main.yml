@@ -24,20 +24,20 @@ jobs:
 
       - name: Package
         run: |
-          helm package --version 0.1.${{ github.run_number }} ./helm-charts/vaultwarden/
+          helm package --version 0.2.${{ github.run_number }} ./helm-charts/vaultwarden/
 
       - name: Upload
         uses: actions/upload-artifact@v7
         with:
           name: chart
-          path: vaultwarden-0.1.${{ github.run_number }}.tgz
+          path: vaultwarden-0.2.${{ github.run_number }}.tgz
 
       - name: Push Chart Artifact
         uses: dmnemec/copy_file_to_another_repo_action@bbebd3da22e4a37d04dca5f782edd5201cb97083
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: vaultwarden-0.1.${{ github.run_number }}.tgz
+          source_file: vaultwarden-0.2.${{ github.run_number }}.tgz
           destination_repo: 'leprechaun/leprechaun.github.io'
           destination_folder: 'vaultwarden'
           destination_branch: master
